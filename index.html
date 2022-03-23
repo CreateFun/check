@@ -1,0 +1,93 @@
+<style>
+    td{
+        text-align: center;
+        padding: 5px;
+    }
+    th{
+        color: blue;
+        padding: 5px;
+    }
+    .center{
+        margin-left:auto;
+        margin-right: auto;
+    }
+
+</style>
+
+<body>
+<h1  style="color:red;text-align: center;"> Sweet Magic Hotel</h1>
+
+<table class="center" border="2">
+    <tr>
+        <th>S.No</th>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+        <th>Unit Cost</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Chicken Biryani</td>
+        <td><input style="width: 60px;" type="text" id="chickenbiryaniQuantity" onchange="chickenBiryaniCost()"></td>
+        <td><input style="width: 100px;" type="text" id="chickenbiryaniCost"></td>
+        <td>Rs 250/-</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Mutton Biryani</td>
+        <td><input style="width: 60px;"  type="text" id="muttonbiryaniQuantity" onchange="muttonBiryaniCost()"></td>
+        <td><input style="width: 100px;" type="text" id="muttonbiryaniCost"></td>
+        <td>Rs 350/-</td>
+    </tr>
+</table>
+<br><br>
+<pre>                                                                                       <button id="submit" class="center" onclick="totalCost()" >Submit</button>   
+                                                                                                                <button id="clear1" onclick="clear1()">Clear</button>
+                                                                            <button onclick="print1();window.print();">Print Bill</button>
+</pre>
+
+<p id="status"></p>
+<h1 style="text-align: center;"> Total:  <input style="width: 60px;" type="text" id="total" ></h1>
+
+
+<script>
+    function chickenBiryaniCost(){
+
+        document.getElementById("chickenbiryaniCost").value=250*parseInt(document.getElementById("chickenbiryaniQuantity").value);
+
+    }
+    function muttonBiryaniCost(){
+
+document.getElementById("muttonbiryaniCost").value=350*parseInt(document.getElementById("muttonbiryaniQuantity").value);
+
+
+}
+function totalCost()
+{
+    console.log(document.getElementById("muttonbiryaniCost").value )
+
+    if(document.getElementById("muttonbiryaniCost").value==''){
+    document.getElementById("muttonbiryaniCost").value=0;
+    document.getElementById("muttonbiryaniQuantity").value=0;
+}
+    document.getElementById("total").value= parseInt(document.getElementById("chickenbiryaniCost").value)+ parseInt(document.getElementById("muttonbiryaniCost").value);
+}
+
+function clear1()
+{
+    document.getElementById("muttonbiryaniCost").value='';
+    document.getElementById("muttonbiryaniQuantity").value='';
+
+    document.getElementById("chickenbiryaniCost").value='';
+    document.getElementById("chickenbiryaniQuantity").value='';
+    document.getElementById("total").value='';
+
+}
+function print1(){
+
+    document.getElementById('clear1').style.visibility='hidden';
+    document.getElementById('submit').style.visibility='hidden';
+
+}
+</script>
+</body>
